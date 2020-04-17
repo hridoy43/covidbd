@@ -12,7 +12,7 @@ export default function GlobalScreen({ navigation }) {
   const [loading, setLoading] = useState(true)
 
   const fetchCovidAllData = () => {
-    axios.get('https://corona.lmao.ninja/countries')
+    axios.get('https://corona.lmao.ninja/v2/countries')
       .then(res => {
         setData(res.data)
         setLoading(false)

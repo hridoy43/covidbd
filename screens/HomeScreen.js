@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation, route }) {
   const [loading, setLoading] = useState(true)
 
   const fetchCovidData = () => {
-    axios.get('https://corona.lmao.ninja/countries/Bangladesh')
+    axios.get('https://corona.lmao.ninja/v2/countries/Bangladesh')
       .then(res => {
         setData(res.data)
         setLoading(false)

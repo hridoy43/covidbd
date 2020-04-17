@@ -9,7 +9,7 @@ export default function WorldStatistics() {
     const color = ["#FFCA28", "#EF5350", "#66BB6A"]
 
     const fetchCovidData = () => {
-        axios.get('https://corona.lmao.ninja/all')
+        axios.get('https://corona.lmao.ninja/v2/all')
             .then(res => {
                 setData(res.data)
             })

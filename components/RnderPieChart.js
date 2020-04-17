@@ -58,11 +58,11 @@ export default function RenderPieChart({ countryData }) {
                     fill={'white'}
                     textAnchor={'middle'}
                     alignmentBaseline={'middle'}
-                    fontSize={16}
+                    fontSize={percentage <= 4 ? 10 : 16}
                     stroke={'white'}
                     strokeWidth={0.2}
                 >
-                    {percentage ? `${(parseInt(percentage))}%` : ''}
+                    {parseInt(percentage) ? `${(parseInt(percentage))}${(percentage <= 1 ? '' : '%')}` : ''}
                 </SvgText>
             )
         })
@@ -95,24 +95,32 @@ export default function RenderPieChart({ countryData }) {
                     />
                     <Text style={{ fontSize: 18, fontWeight: '500' }}>{country || ''}</Text>
                 </View>
-                <Animated.View style={{
-                    opacity: fadeAnim,
-                    transform: [
-                        { translateX: position.x },
-                        { rotate: rotate }
-                    ]
-                }}>
+                <Animated.View
+                    style={{
+                        opacity: fadeAnim,
+                        transform: [
+                            { translateX: position.x },
+                            { rotate: rotate }
+                        ]
+                    }}
+                >
 
                     <PieChart
                         style={{ height: 200 }}
                         valueAccessor={({ item }) => item.value}
                         data={pieData}
                         spacing={0}
-                        outerRadius={'95%'}
+                        padAngle={0}
+                        innerRadius={50}
+                        outerRadius={95}
+                        //labelRadius={110} //to position the label outside pie
+                        animate={true}
+                        animationDuration={300}
                     >
                         <Labels />
                     </PieChart>
                 </Animated.View>
+
                 <View style={styles.statsView}>
                     {onLoadStats(data)}
                 </View>

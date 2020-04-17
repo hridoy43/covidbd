@@ -45,10 +45,12 @@ const CountryItemStats = ({ data: countryData }) => {
             <Card style={styles.card}>
                 <Card>
                     <View style={styles.itemHeading}>
-                        <Image
-                            style={{ height: 18, width: 28, margin: 8 }}
-                            source={{ uri: `${countryInfo && countryInfo.flag}` }}
-                        />
+                        {countryInfo && countryInfo.flag &&
+                            < Image
+                                style={{ height: 18, width: 28, margin: 8 }}
+                                source={{ uri: `${countryInfo.flag}` }}
+                            />
+                        }
                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{country || ''}</Text>
                     </View>
                 </Card>
