@@ -4,6 +4,7 @@ import { Card } from 'react-native-paper'
 import { PieChart } from 'react-native-svg-charts'
 import { Text as SvgText } from "react-native-svg";
 import { FontAwesome } from '@expo/vector-icons';
+import NumberFormatGenerator from '../components/NumberFormatGenerator'
 
 
 
@@ -76,9 +77,7 @@ export default function RenderPieChart({ countryData }) {
                         <FontAwesome name="square" style={styles.iconStyle} size={16} color={color[index]} />
                         <Text>{statsString[index]}</Text>
                     </View>
-                    <Text>
-                        {item || 0} জন
-                    </Text>
+                    <NumberFormatGenerator value={item} />
                 </View>
             )
         })
@@ -111,11 +110,9 @@ export default function RenderPieChart({ countryData }) {
                         data={pieData}
                         spacing={0}
                         padAngle={0}
-                        innerRadius={50}
+                        //innerRadius={50}
                         outerRadius={95}
-                        //labelRadius={110} //to position the label outside pie
-                        animate={true}
-                        animationDuration={300}
+                    //labelRadius={110} //to position the label outside pie
                     >
                         <Labels />
                     </PieChart>

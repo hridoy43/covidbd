@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Card, Title, Subheading } from 'react-native-paper'
 import { FontAwesome } from '@expo/vector-icons';
+import NumberFormatGenerator from '../components/NumberFormatGenerator'
+
 
 const TodaysCase = ({ countryData }) => {
     const { todayCases, todayDeaths, active } = countryData
@@ -19,9 +21,7 @@ const TodaysCase = ({ countryData }) => {
                         <FontAwesome name="square" style={styles.iconStyle} size={16} color={color[index]} />
                         <Text>{statsString[index]}</Text>
                     </View>
-                    <Text>
-                        {item || 0} জন
-                    </Text>
+                    <NumberFormatGenerator value={item} />
                 </View>
             )
         })

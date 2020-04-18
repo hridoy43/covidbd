@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Card, Title } from 'react-native-paper'
 import axios from 'axios'
+import NumberFormatGenerator from '../components/NumberFormatGenerator'
 
 export default function WorldStatistics() {
     const [data, setData] = useState({})
@@ -33,13 +34,13 @@ export default function WorldStatistics() {
                     <Card style={styles.statsCard}>
                         <View style={styles.singleStats}>
                             <Title style={{ color: color[0], ...styles.singleTitle }}>আক্রান্ত</Title>
-                            <Text style={styles.text}>{data.cases ? data.cases : '-'} জন</Text>
+                            <NumberFormatGenerator textStyle={styles.text} value={data.cases} emptySymbol={'-'} />
                         </View>
                     </Card>
                     <Card style={styles.statsCard}>
                         <View style={styles.singleStats}>
                             <Title style={{ color: color[1], ...styles.singleTitle }}>মারা গিয়েছে</Title>
-                            <Text style={styles.text}>{data.deaths ? data.deaths : '-'} জন</Text>
+                            <NumberFormatGenerator textStyle={styles.text} value={data.deaths} emptySymbol={'-'} />
                         </View>
                     </Card>
                 </View>
@@ -48,7 +49,7 @@ export default function WorldStatistics() {
                     <Card style={styles.statsCard}>
                         <View style={styles.singleStats}>
                             <Title style={{ color: color[2], ...styles.singleTitle }}>সুস্থ্য হয়েছেন</Title>
-                            <Text style={styles.text}>{data.recovered ? data.recovered : '-'} জন</Text>
+                            <NumberFormatGenerator textStyle={styles.text} value={data.recovered} emptySymbol={'-'} />
                         </View>
                     </Card>
                 </View>
